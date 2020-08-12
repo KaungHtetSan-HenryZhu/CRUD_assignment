@@ -1,0 +1,158 @@
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+<title>update quantity</title>
+</head>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<body>
+
+<!--nav bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+
+  <a class="navbar-brand text-white" href="#">StocKeeper</a>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+
+    </div>
+  </div>
+</nav>
+
+<form  method="post">
+<!--context body-->
+
+ <% if(requestdata.length!=0) {
+   var i=1;
+   requestdata.forEach(function(data){
+   %>
+  <div class="container" style="margin-top:50px; margin-bottom:10px;" align="center">
+
+    <h3 name="productname"><%= data.name %></h3><br>
+
+  </div>
+
+  <div class="container" algin="center">
+
+  <div class="row">
+
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+
+       <label class="text-danger" id="alertdata"></label>
+
+      <div class="input-group mb-3">
+       <label id="productid" name ="productid">
+         product id : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= data.id %>
+        </label>
+        <input type="hidden" name="itemid" value=  <%= data.id %> >
+      </div>
+
+      <div class="input-group mb-3">
+       <label name="category" >
+         အမျိုးအစား : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= data.category %>
+        </label>
+      </div>
+
+      <div class="input-group mb-3">
+       <label name="warehouse">
+         နေရာ : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          ဂိုဒေါင်( <%= data.warehouse_id %> )
+        </label>
+        <input type="hidden" name="warehouseid" value=<%= data.warehouse_id %> >
+
+      </div>
+
+      <div class="input-group mb-3">
+       <label>ဂိုဒေါင်ရှိ စာရင်း : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <label id="qty" name="qty" style="font-size:20px;" class="text-primary">
+         <b><%= data.qty %></b>
+         </label>
+        </label>
+      </div>
+
+      <div class="input-group mb-3">
+        <input type="text" onchange="qtyChange()" class="form-control"  id="inputqty" name="inputqty" placeholder="အရေအတွက်">
+      </div>
+
+      <div class="input-group mb-3">
+          <select class="form-control" id="selectaction" name="selectaction" onchange="qtyChange()" >
+            <div class="form-group ">
+              <option value="0">ပေါင်းထည့်မည် (+)</option>
+              <option value="1">ထုတ်ယူမည် (-)</option>
+            </select>
+        </div>
+
+        <div align="center" class="mb-3">
+          <h3 id="lastqty" name="lastqty" class="text-danger"><b>0</b></h3>
+          <input type="hidden" id="finalqty" name="finalqty">
+      </div>
+
+      <div class="input-group mb-3">
+        <button type="submit" name="btn-login" class="btn btn-success btn-block border p-3 ">သိမ်းဆည်းမည်</button>
+     </div>
+
+  </div>
+
+  <div class="col-sm-4"></div>
+
+    </div>
+
+  </div>
+  </div>
+
+</form>
+
+    <% i++;}) }
+    else{ %>
+    <div align="center">no data </div>
+    <% } %>
+</body>
+
+<script>
+
+  var qtyChange = function(){
+
+    var totalqty = parseInt(document.getElementById("qty").innerText);
+    var qty = parseInt(document.getElementById("inputqty").value);
+
+    if(document.getElementById("selectaction").value == 0)
+    {
+        var lastqty =  totalqty + qty;
+      document.getElementById("lastqty").innerHTML = lastqty;
+      document.getElementById("finalqty").value = lastqty;
+      document.getElementById("alertdata").innerHTML = "";
+    }
+    else
+    {
+      if(totalqty>=qty && qty>0){
+        var lastqty =  totalqty - qty;
+        document.getElementById("lastqty").innerHTML = lastqty;
+        document.getElementById("finalqty").value = lastqty;
+        document.getElementById("alertdata").innerHTML = "";
+      }
+      else
+      {
+        document.getElementById("lastqty").innerHTML = "error";
+        document.getElementById("alertdata").innerHTML = "ထည့်သွင်းမှု မှားယွင်းနေပါသည်။ ပြန်လည်စစ်ဆေးပါ";
+      }
+    }//else value
+
+  }//
+
+
+
+</script>
+
+</html>

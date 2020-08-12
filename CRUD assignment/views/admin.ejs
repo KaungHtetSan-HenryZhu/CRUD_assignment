@@ -1,0 +1,82 @@
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+<title>login admin account</title>
+</head>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<body>
+
+<!--nav bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+
+  <a class="navbar-brand text-white" href="#">StocKeeper : Admin</a>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+
+    </div>
+  </div>
+</nav>
+
+<!--context body-->
+  <div class="container" style="margin-top:50px; margin-bottom:50px;" align="center">
+
+    <h3>ပင်မ ဂိုဒေါင်ထိန်းသိမ်းရေးစင်တာ</h3><br>
+    <h5>အသုံးပြုရန် အကောင့်ဝင်ပါ</h5>
+
+  </div>
+
+  <div class="container" algin="center">
+
+  <div class="row">
+
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+
+    <form  method="post">
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" id="userId" name="userId" placeholder="အကောင့်နံပါတ်ထည့်ပါ">
+      </div>
+
+      <div class="input-group mb-3">
+        <input type="password" class="form-control" id="password" name="password" placeholder="password ထည့်ပါ">
+      </div>
+
+      <div class="input-group mb-3">
+        <button type="submit" name="btn-login" class="btn btn-danger btn-block border p-3 ">အကောင့်ဝင်မည်</button>
+     </div>
+
+     <% if (postData.length!=0){ %>
+        <p class="alert alert-danger m-3" align="center"> အကောင့်ဝင်ခြင်း မအောင်မြင်ပါ </p>
+      <% }
+      else{  }
+      %>
+
+    </form>
+
+  </div>
+
+  <div class="col-sm-4"></div>
+
+    </div>
+
+    <div align="center">
+      <br><br>
+      <p>StocKeeper(ဂိုဒေါင်ထိန်းချုပ်စနစ်) သည် ပစွည်းများကိုအလွယ်တကူစာရင်းစစ်နိုင်ရန် ရည်ရွယ်ဖန်တီးထားခြင်းပင်ဖြစ်သည်။  </p>
+    </div>
+
+  </div>
+  </div>
+
+</body>
+</html>

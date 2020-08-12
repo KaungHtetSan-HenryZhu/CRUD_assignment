@@ -1,0 +1,80 @@
+<html>
+<head>
+
+<title>Home</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+  <!--nav bar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+
+    <a class="navbar-brand text-white" href="#">StocKeeper</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+
+        <a class="nav-item text-white nav-link active" href="/signup">အကောင့်အသစ်ဖွင့်မည် <span class="sr-only">(current)</span></a>
+        <a class="nav-item text-white nav-link" href="/">အကောင့်ထွက်မည်</a>
+      </div>
+    </div>
+  </nav>
+
+  <!--context body-->
+
+
+  <form method="post">
+
+  <div class="container-fluid p-3" align="center">
+  <h1>ဂိုဒေါင်အမည်များ</h1>
+  </div>
+
+  <div class="container p-3">
+
+    <div class="row">
+      <div class="col-sm-1"> </div>
+
+      <div class="col-sm-10 ">
+  <!-- btn area-->
+        <div class="container-fluid ">
+          <div class="row">
+              <%
+                if(requestdata.length!=0){
+                  var i=1;
+                  requestdata.forEach(function(data){
+                  %>
+                  <div class="col-sm-5 p-3" align="center">
+                    <Button type="submit" id="btn-warehouse" name="btnId" class="btn btn-block btn-warning" style="height:200px; font-size:22px;" value=<%= data.id %> >
+                      <%= data.name %>
+                    </Button>
+                   </div>
+                   <%  i++; }) }
+                   else{ %>
+                     <div align="center">No data found</div>
+                     <% } %>
+          </div>
+  <!--container-fliuid-->
+        </div>
+
+       </div>
+      <div class="col-sm-1 "></div>
+      <!--row-->
+    </div>
+    <!--container-->
+  </div>
+
+  </form>
+
+</body>
+</html>
